@@ -31,6 +31,18 @@
     <Filter Include="Shaders\raw_load\UAV">
       <UniqueIdentifier>{829ead92-8447-4de4-a98e-5136171b3640}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders\texture_load\SRV">
+      <UniqueIdentifier>{43e8f431-ae6a-4dee-8b06-36d8036830b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\texture_load\UAV">
+      <UniqueIdentifier>{e8dab62a-c9cf-4105-8da9-1b12805e2f39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\typed_load\SRV">
+      <UniqueIdentifier>{5597a668-01f2-4d8b-9051-e87816273a09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\typed_load\UAV">
+      <UniqueIdentifier>{c6f746d6-44fe-4f6b-927f-9f283c2f97a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="directx.cpp">
@@ -70,60 +82,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="loadTyped1dInvariant.hlsl">
-      <Filter>Shaders\typed_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTyped1dLinear.hlsl">
-      <Filter>Shaders\typed_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTyped1dRandom.hlsl">
-      <Filter>Shaders\typed_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTyped2dInvariant.hlsl">
-      <Filter>Shaders\typed_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTyped2dLinear.hlsl">
-      <Filter>Shaders\typed_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTyped2dRandom.hlsl">
-      <Filter>Shaders\typed_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTyped4dInvariant.hlsl">
-      <Filter>Shaders\typed_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTyped4dLinear.hlsl">
-      <Filter>Shaders\typed_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTyped4dRandom.hlsl">
-      <Filter>Shaders\typed_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTex1dInvariant.hlsl">
-      <Filter>Shaders\texture_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTex1dLinear.hlsl">
-      <Filter>Shaders\texture_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTex1dRandom.hlsl">
-      <Filter>Shaders\texture_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTex4dInvariant.hlsl">
-      <Filter>Shaders\texture_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTex4dLinear.hlsl">
-      <Filter>Shaders\texture_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTex4dRandom.hlsl">
-      <Filter>Shaders\texture_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTex2dInvariant.hlsl">
-      <Filter>Shaders\texture_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTex2dLinear.hlsl">
-      <Filter>Shaders\texture_load</Filter>
-    </FxCompile>
-    <FxCompile Include="loadTex2dRandom.hlsl">
-      <Filter>Shaders\texture_load</Filter>
-    </FxCompile>
     <FxCompile Include="loadRaw1dInvariant.hlsl">
       <Filter>Shaders\raw_load\SRV</Filter>
     </FxCompile>
@@ -195,6 +153,114 @@
     </FxCompile>
     <FxCompile Include="loadRaw4dRWRandom.hlsl">
       <Filter>Shaders\raw_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex1dInvariant.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex1dLinear.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex1dRandom.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex2dInvariant.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex2dLinear.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex2dRandom.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex4dInvariant.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex4dLinear.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex4dRandom.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex1dRWInvariant.hlsl">
+      <Filter>Shaders\texture_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex1dRWLinear.hlsl">
+      <Filter>Shaders\texture_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex1dRWRandom.hlsl">
+      <Filter>Shaders\texture_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex2dRWInvariant.hlsl">
+      <Filter>Shaders\texture_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex2dRWLinear.hlsl">
+      <Filter>Shaders\texture_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex2dRWRandom.hlsl">
+      <Filter>Shaders\texture_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex4dRWInvariant.hlsl">
+      <Filter>Shaders\texture_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex4dRWLinear.hlsl">
+      <Filter>Shaders\texture_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex4dRWRandom.hlsl">
+      <Filter>Shaders\texture_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped1dInvariant.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped1dLinear.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped1dRandom.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped2dInvariant.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped2dLinear.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped2dRandom.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped4dInvariant.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped4dLinear.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped4dRandom.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped1dRWInvariant.hlsl">
+      <Filter>Shaders\typed_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped1dRWLinear.hlsl">
+      <Filter>Shaders\typed_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped1dRWRandom.hlsl">
+      <Filter>Shaders\typed_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped2dRWInvariant.hlsl">
+      <Filter>Shaders\typed_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped2dRWLinear.hlsl">
+      <Filter>Shaders\typed_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped2dRWRandom.hlsl">
+      <Filter>Shaders\typed_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped4dRWInvariant.hlsl">
+      <Filter>Shaders\typed_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped4dRWLinear.hlsl">
+      <Filter>Shaders\typed_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped4dRWRandom.hlsl">
+      <Filter>Shaders\typed_load\UAV</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
