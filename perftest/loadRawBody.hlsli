@@ -2,7 +2,6 @@
 #include "loadConstantsGPU.h"
 
 RWBuffer<float> output : register(u0);
-ByteAddressBuffer sourceData : register(t0);
 
 cbuffer CB0 : register(b0)
 {

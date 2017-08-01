@@ -1,4 +1,4 @@
 #define LOAD_WIDTH 4
 #define LOAD_INVARIANT
-ByteAddressBuffer sourceData : register(t0);
+RWByteAddressBuffer sourceData : register(u1);
 #include "loadRawBody.hlsli"
