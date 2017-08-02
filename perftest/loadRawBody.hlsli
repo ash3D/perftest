@@ -1,6 +1,10 @@
 #include "hash.hlsli"
 #include "loadConstantsGPU.h"
 
+#ifndef UNROLL
+#define UNROLL 1
+#endif
+
 RWBuffer<float> output : register(u0);
 
 cbuffer CB0 : register(b0)
@@ -39,7 +43,11 @@ void main(uint3 tid : SV_DispatchThreadID, uint gix : SV_GroupIndex)
 	htid = htid * 16 + loadConstants.readStartAddress;
 #endif
 
+#if UNROLL
+	[unroll]
+#else
 	[loop]
+#endif
 	for (int i = 0; i < 256; ++i)
 	{
 		// Mask with runtime constant to prevent unwanted compiler optimizations
