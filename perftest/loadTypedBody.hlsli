@@ -1,6 +1,10 @@
 #include "hash.hlsli"
 #include "loadConstantsGPU.h"
 
+#ifndef LOOP_SCALEDOWN
+#define LOOP_SCALEDOWN 2
+#endif
+
 #ifndef ADDRESS_MASK
 #define ADDRESS_MASK 0
 #endif
@@ -33,7 +37,7 @@ void main(uint3 tid : SV_DispatchThreadID, uint gix : SV_GroupIndex)
 #endif
 
 	[loop]
-	for (int i = 0; i < 256; ++i)
+	for (int i = 0; i < 256 / LOOP_SCALEDOWN; ++i)
 	{
 		// Mask with runtime constant to prevent unwanted compiler optimizations
 		uint elemIdx = htid + i;

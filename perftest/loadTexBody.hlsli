@@ -1,6 +1,10 @@
 #include "hash.hlsli"
 #include "loadConstantsGPU.h"
 
+#ifndef LOOP_SCALEDOWN
+#define LOOP_SCALEDOWN 2
+#endif
+
 #ifndef ADDRESS_MASK
 #define ADDRESS_MASK 0
 #endif
@@ -36,7 +40,7 @@ void main(uint3 tid : SV_DispatchThreadID, uint3 gid : SV_GroupThreadID)
 	for (int y = 0; y < 16; ++y)
 	{
 		[loop]
-		for (int x = 0; x < 16; ++x)
+		for (int x = 0; x < 16 / LOOP_SCALEDOWN; ++x)
 		{
 			// Mask with runtime constant to prevent unwanted compiler optimizations
 			uint2 elemIdx = htid + uint2(x, y);
