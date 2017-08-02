@@ -1,6 +1,10 @@
 #include "hash.hlsli"
 #include "loadConstantsGPU.h"
 
+#ifndef UNROLL_FACTOR
+#define UNROLL_FACTOR 32
+#endif
+
 RWBuffer<float> output : register(u0);
 
 cbuffer CB0 : register(b0)
@@ -29,18 +33,22 @@ void main(uint3 tid : SV_DispatchThreadID, uint gix : SV_GroupIndex)
 #endif
 
 	[loop]
-	for (int i = 0; i < 256; ++i)
+	for (int i = 0; i < 256;)
 	{
-		// Mask with runtime constant to prevent unwanted compiler optimizations
-		uint elemIdx = (htid + i) | loadConstants.elementsMask;
+		[unroll]
+		for (int j = 0; j < UNROLL_FACTOR; ++j, ++i)
+		{
+			// Mask with runtime constant to prevent unwanted compiler optimizations
+			uint elemIdx = (htid + i) | loadConstants.elementsMask;
 
 #if LOAD_WIDTH == 1
-		value += sourceData[elemIdx].xxxx;
+			value += sourceData[elemIdx].xxxx;
 #elif LOAD_WIDTH == 2
-		value += sourceData[elemIdx].xyxy;
+			value += sourceData[elemIdx].xyxy;
 #elif LOAD_WIDTH == 4
-		value += sourceData[elemIdx].xyzw;
+			value += sourceData[elemIdx].xyzw;
 #endif
+		}
 	}
 
     // Linear write to LDS (no bank conflicts). Significantly faster than memory loads.
