@@ -31,7 +31,7 @@ void main(uint3 tid : SV_DispatchThreadID, uint3 gid : SV_GroupThreadID)
 	[loop]
 	for (int y = 0; y < 16; ++y)
 	{
-		[unroll]
+		[loop]
 		for (int x = 0; x < 16; ++x)
 		{
 			// Mask with runtime constant to prevent unwanted compiler optimizations
