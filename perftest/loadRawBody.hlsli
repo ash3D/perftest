@@ -5,6 +5,10 @@
 #define UNROLL 1
 #endif
 
+#ifndef ENABLE_READ_START_ADDRESS
+#define ENABLE_READ_START_ADDRESS 0
+#endif
+
 RWBuffer<float> output : register(u0);
 
 cbuffer CB0 : register(b0)
@@ -33,14 +37,9 @@ void main(uint3 tid : SV_DispatchThreadID, uint gix : SV_GroupIndex)
 #endif
 
 	// Moved out all math from the inner loop
-#if LOAD_WIDTH == 1
-	htid = htid * 4 + loadConstants.readStartAddress;
-#elif LOAD_WIDTH == 2
-	htid = htid * 8 + loadConstants.readStartAddress;
-#elif LOAD_WIDTH == 3
-	htid = htid * 12 + loadConstants.readStartAddress;
-#elif LOAD_WIDTH == 4
-	htid = htid * 16 + loadConstants.readStartAddress;
+	htid *= 4 * LOAD_WIDTH;
+#if ENABLE_READ_START_ADDRESS
+	htid += loadConstants.readStartAddress;
 #endif
 
 #if UNROLL
