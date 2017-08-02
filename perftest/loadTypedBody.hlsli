@@ -1,6 +1,10 @@
 #include "hash.hlsli"
 #include "loadConstantsGPU.h"
 
+#ifndef ADDRESS_MASK
+#define ADDRESS_MASK 0
+#endif
+
 RWBuffer<float> output : register(u0);
 
 cbuffer CB0 : register(b0)
@@ -32,7 +36,12 @@ void main(uint3 tid : SV_DispatchThreadID, uint gix : SV_GroupIndex)
 	for (int i = 0; i < 256; ++i)
 	{
 		// Mask with runtime constant to prevent unwanted compiler optimizations
-		uint elemIdx = (htid + i) | loadConstants.elementsMask;
+		uint elemIdx = htid + i;
+#if ADDRESS_MASK == 1
+		elemIdx |= loadConstants.elementsMask;
+#elif ADDRESS_MASK == 2
+		elemIdx &= ~loadConstants.elementsMask;
+#endif
 
 #if LOAD_WIDTH == 1
 		value += sourceData[elemIdx].xxxx;

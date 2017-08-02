@@ -9,6 +9,10 @@
 #define ENABLE_READ_START_ADDRESS 0
 #endif
 
+#ifndef ADDRESS_MASK
+#define ADDRESS_MASK 0
+#endif
+
 RWBuffer<float> output : register(u0);
 
 cbuffer CB0 : register(b0)
@@ -50,7 +54,12 @@ void main(uint3 tid : SV_DispatchThreadID, uint gix : SV_GroupIndex)
 	for (int i = 0; i < 256; ++i)
 	{
 		// Mask with runtime constant to prevent unwanted compiler optimizations
-		uint address = (htid + i * (4 * LOAD_WIDTH)) | loadConstants.elementsMask;	
+		uint address = htid + i * (4 * LOAD_WIDTH);
+#if ADDRESS_MASK == 1
+		address |= loadConstants.elementsMask;
+#elif ADDRESS_MASK == 2
+		address &= ~loadConstants.elementsMask;
+#endif
 
 #if LOAD_WIDTH == 1
 		value += sourceData.Load(address).xxxx;
