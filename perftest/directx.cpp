@@ -346,38 +346,22 @@ void DirectXDevice::dispatch(ID3D11ComputeShader *shader, uint3 resolution, uint
 	// Set resources
 	if(cbs.size())
 	{
-		ID3D11Buffer* cbarray[D3D11_COMMONSHADER_CONSTANT_BUFFER_API_SLOT_COUNT];
-		int slot = 0;
-		for(auto cb : cbs)
-			cbarray[slot++] = cb;
-		deviceContext->CSSetConstantBuffers(0, static_cast<UINT>(cbs.size()), cbarray);
+		deviceContext->CSSetConstantBuffers(0, static_cast<UINT>(cbs.size()), cbs.begin());
 	}
 
 	if(srvs.size())
 	{
-		ID3D11ShaderResourceView* srvarray[D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT];
-		int slot = 0;
-		for(auto srv : srvs)
-			srvarray[slot++] = srv;
-		deviceContext->CSSetShaderResources(0, static_cast<UINT>(srvs.size()), srvarray);
+		deviceContext->CSSetShaderResources(0, static_cast<UINT>(srvs.size()), srvs.begin());
 	}
 
 	if(uavs.size())
 	{
-		ID3D11UnorderedAccessView* uavarray[D3D11_1_UAV_SLOT_COUNT];
-		int slot = 0;
-		for(auto uav : uavs)
-			uavarray[slot++] = uav;
-		deviceContext->CSSetUnorderedAccessViews(0, static_cast<UINT>(uavs.size()), uavarray, nullptr);
+		deviceContext->CSSetUnorderedAccessViews(0, static_cast<UINT>(uavs.size()), uavs.begin(), nullptr);
 	}
 
 	if(samplers.size())
 	{
-		ID3D11SamplerState *samplerarray[D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT];
-		int slot = 0;
-		for(auto sampler : samplers)
-			samplerarray[slot++] = sampler;
-		deviceContext->CSSetSamplers(0, static_cast<UINT>(samplers.size()), samplerarray);
+		deviceContext->CSSetSamplers(0, static_cast<UINT>(samplers.size()), samplers.begin());
 	}
 
 	// Render
