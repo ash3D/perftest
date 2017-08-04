@@ -13,6 +13,7 @@ void benchTest(DirectXDevice& dx, const std::function<void(DirectXDevice&, uint3
 
 	QueryHandle query = dx.startPerformanceQuery(name);
 	dispatch(dx, workloadThreadCount, workloadGroupSize);
+	dx.getDeviceContext()->Flush();
 	dx.endPerformanceQuery(query);
 }
 
