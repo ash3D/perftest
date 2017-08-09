@@ -262,6 +262,42 @@
     <FxCompile Include="loadTyped4dRWRandom.hlsl">
       <Filter>Shaders\typed_load\UAV</Filter>
     </FxCompile>
+    <FxCompile Include="loadRaw2dInvariantUnaligned.hlsl">
+      <Filter>Shaders\raw_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadRaw2dLinearUnaligned.hlsl">
+      <Filter>Shaders\raw_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadRaw2dRandomUnaligned.hlsl">
+      <Filter>Shaders\raw_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadRaw4dInvariantUnaligned.hlsl">
+      <Filter>Shaders\raw_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadRaw4dLinearUnaligned.hlsl">
+      <Filter>Shaders\raw_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadRaw4dRandomUnaligned.hlsl">
+      <Filter>Shaders\raw_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadRaw2dRWInvariantUnaligned.hlsl">
+      <Filter>Shaders\raw_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadRaw2dRWLinearUnaligned.hlsl">
+      <Filter>Shaders\raw_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadRaw2dRWRandomUnaligned.hlsl">
+      <Filter>Shaders\raw_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadRaw4dRWInvariantUnaligned.hlsl">
+      <Filter>Shaders\raw_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadRaw4dRWLinearUnaligned.hlsl">
+      <Filter>Shaders\raw_load\UAV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadRaw4dRWRandomUnaligned.hlsl">
+      <Filter>Shaders\raw_load\UAV</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="hash.hlsli">

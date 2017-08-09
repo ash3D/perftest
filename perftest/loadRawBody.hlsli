@@ -9,8 +9,12 @@
 #define UNROLL 1
 #endif
 
-#ifndef ENABLE_READ_START_ADDRESS
-#define ENABLE_READ_START_ADDRESS 0
+#define ENABLE_DYNAMIC_READ_START_ADDRESS 0
+
+#if ENABLE_DYNAMIC_READ_START_ADDRESS
+#define READ_START_ADDRESS loadConstants.readStartAddress
+#elif !defined READ_START_ADDRESS
+#define READ_START_ADDRESS 0
 #endif
 
 #ifndef ADDRESS_MASK
@@ -46,9 +50,7 @@ void main(uint3 tid : SV_DispatchThreadID, uint gix : SV_GroupIndex)
 
 	// Moved out all math from the inner loop
 	htid *= 4 * LOAD_WIDTH;
-#if ENABLE_READ_START_ADDRESS
-	htid += loadConstants.readStartAddress;
-#endif
+	htid += READ_START_ADDRESS;
 
 #if UNROLL
 	[unroll]
