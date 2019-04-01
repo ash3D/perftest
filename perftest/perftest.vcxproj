@@ -486,6 +486,9 @@
     <FxCompile Include="loadTyped2dRWInvariant.hlsl" />
     <FxCompile Include="loadTyped2dRWLinear.hlsl" />
     <FxCompile Include="loadTyped2dRWRandom.hlsl" />
+    <FxCompile Include="loadTyped3dInvariant.hlsl" />
+    <FxCompile Include="loadTyped3dLinear.hlsl" />
+    <FxCompile Include="loadTyped3dRandom.hlsl" />
     <FxCompile Include="loadTyped4dInvariant.hlsl">
       <DisableOptimizations Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DisableOptimizations>
       <EnableDebuggingInformation Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</EnableDebuggingInformation>

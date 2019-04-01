@@ -298,6 +298,15 @@
     <FxCompile Include="loadRaw4dRWRandomUnaligned.hlsl">
       <Filter>Shaders\raw_load\UAV</Filter>
     </FxCompile>
+    <FxCompile Include="loadTyped3dInvariant.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped3dLinear.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTyped3dRandom.hlsl">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="hash.hlsli">
