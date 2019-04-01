@@ -387,6 +387,9 @@
     <FxCompile Include="loadTex2dRWInvariant.hlsl" />
     <FxCompile Include="loadTex2dRWLinear.hlsl" />
     <FxCompile Include="loadTex2dRWRandom.hlsl" />
+    <FxCompile Include="loadTex3dInvariant.hlsl" />
+    <FxCompile Include="loadTex3dLinear.hlsl" />
+    <FxCompile Include="loadTex3dRandom.hlsl" />
     <FxCompile Include="loadTex4dInvariant.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compute</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>

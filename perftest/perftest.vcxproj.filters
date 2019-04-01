@@ -307,6 +307,15 @@
     <FxCompile Include="loadTyped3dRandom.hlsl">
       <Filter>Shaders\typed_load\SRV</Filter>
     </FxCompile>
+    <FxCompile Include="loadTex3dInvariant.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex3dLinear.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
+    <FxCompile Include="loadTex3dRandom.hlsl">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="hash.hlsli">

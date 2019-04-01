@@ -54,6 +54,8 @@ void main(uint3 tid : SV_DispatchThreadID, uint3 gid : SV_GroupThreadID)
 			value += sourceData[elemIdx].xxxx;
 #elif LOAD_WIDTH == 2
 			value += sourceData[elemIdx].xyxy;
+#elif LOAD_WIDTH == 3
+			value += sourceData[elemIdx].xyzz;
 #elif LOAD_WIDTH == 4
 			value += sourceData[elemIdx].xyzw;
 #endif

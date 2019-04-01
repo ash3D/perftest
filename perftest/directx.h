@@ -51,7 +51,7 @@ public:
 
 	ID3D11Buffer* createConstantBuffer(unsigned bytes);
 	ID3D11Buffer* createBuffer(unsigned numElements, unsigned strideBytes, BufferType type = BufferType::Default);
-	ID3D11Texture2D* createTexture2d(uint2 dimensions, DXGI_FORMAT format, unsigned mips);
+	ID3D11Texture2D* createTexture2d(uint2 dimensions, DXGI_FORMAT format, unsigned mips, bool alowUAV = true);
 	ID3D11Texture3D* createTexture3d(uint3 dimensions, DXGI_FORMAT format, unsigned mips);
 	ID3D11SamplerState* createSampler(SamplerType type);
 

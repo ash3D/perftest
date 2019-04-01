@@ -182,7 +182,7 @@ ID3D11Buffer* DirectXDevice::createBuffer(unsigned numElements, unsigned strideB
 	return buffer;
 }
 
-ID3D11Texture2D* DirectXDevice::createTexture2d(uint2 dimensions, DXGI_FORMAT format, unsigned mips)
+ID3D11Texture2D* DirectXDevice::createTexture2d(uint2 dimensions, DXGI_FORMAT format, unsigned mips, bool allowUAV)
 {
 	D3D11_TEXTURE2D_DESC desc;
 	desc.Width = dimensions.x;
@@ -193,7 +193,9 @@ ID3D11Texture2D* DirectXDevice::createTexture2d(uint2 dimensions, DXGI_FORMAT fo
 	desc.MipLevels = mips;
 	desc.Format = format;
 	desc.Usage = D3D11_USAGE_DEFAULT;
-	desc.BindFlags = D3D11_BIND_UNORDERED_ACCESS | D3D11_BIND_SHADER_RESOURCE;
+	desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+	if (allowUAV)
+		desc.BindFlags |= D3D11_BIND_UNORDERED_ACCESS;
 	desc.CPUAccessFlags = 0;
 	desc.MiscFlags = 0;
 
