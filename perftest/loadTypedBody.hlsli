@@ -26,13 +26,13 @@ void main(uint3 tid : SV_DispatchThreadID, uint gix : SV_GroupIndex)
 	float4 value = 0.0;
 	
 #if defined(LOAD_INVARIANT)
-    // All threads load from same address. Index is wave invariant.
+	// All threads load from same address. Index is wave invariant.
 	uint htid = 0;
 #elif defined(LOAD_LINEAR)
 	// Linearly increasing starting address to allow memory coalescing
 	uint htid = gix;
 #elif defined(LOAD_RANDOM)
-    // Randomize start address offset (0-15) to prevent memory coalescing
+	// Randomize start address offset (0-15) to prevent memory coalescing
 	uint htid = (hash1(gix) & 0xf);
 #endif
 
@@ -68,6 +68,6 @@ void main(uint3 tid : SV_DispatchThreadID, uint gix : SV_GroupIndex)
 	[branch]
 	if (loadConstants.writeIndex != 0xffffffff)
 	{
-        output[tid.x + tid.y] = dummyLDS[loadConstants.writeIndex];
-    }
+		output[tid.x + tid.y] = dummyLDS[loadConstants.writeIndex];
+	}
 }

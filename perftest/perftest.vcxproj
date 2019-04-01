@@ -526,8 +526,14 @@
   <ItemGroup>
     <None Include="hash.hlsli" />
     <None Include="loadRawBody.hlsli" />
+    <None Include="loadRawSRV.hlsli" />
+    <None Include="loadRawUAV.hlsli" />
     <None Include="loadTexBody.hlsli" />
+    <None Include="loadTexSRV.hlsli" />
+    <None Include="loadTexUAV.hlsli" />
     <None Include="loadTypedBody.hlsli" />
+    <None Include="loadTypedSRV.hlsli" />
+    <None Include="loadTypedUAV.hlsli" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -321,5 +321,23 @@
     <None Include="loadTexBody.hlsli">
       <Filter>Shaders\texture_load</Filter>
     </None>
+    <None Include="loadRawSRV.hlsli">
+      <Filter>Shaders\raw_load\SRV</Filter>
+    </None>
+    <None Include="loadRawUAV.hlsli">
+      <Filter>Shaders\raw_load\UAV</Filter>
+    </None>
+    <None Include="loadTexSRV.hlsli">
+      <Filter>Shaders\texture_load\SRV</Filter>
+    </None>
+    <None Include="loadTexUAV.hlsli">
+      <Filter>Shaders\texture_load\UAV</Filter>
+    </None>
+    <None Include="loadTypedSRV.hlsli">
+      <Filter>Shaders\typed_load\SRV</Filter>
+    </None>
+    <None Include="loadTypedUAV.hlsli">
+      <Filter>Shaders\typed_load\UAV</Filter>
+    </None>
   </ItemGroup>
 </Project>

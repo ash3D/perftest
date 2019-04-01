@@ -26,13 +26,13 @@ void main(uint3 tid : SV_DispatchThreadID, uint3 gid : SV_GroupThreadID)
 	float4 value = 0.0;
 	
 #if defined(LOAD_INVARIANT)
-    // All threads load from same address. Index is wave invariant.
+	// All threads load from same address. Index is wave invariant.
 	uint2 htid = 0;
 #elif defined(LOAD_LINEAR)
 	// Linearly increasing starting address.
 	uint2 htid = gid;
 #elif defined(LOAD_RANDOM)
-    // Randomize start address offset (0-15)
+	// Randomize start address offset (0-15)
 	uint2 htid = uint2((hash1(gid.x) & 0xf), (hash1(gid.y) & 0xf));
 #endif
 
@@ -59,7 +59,7 @@ void main(uint3 tid : SV_DispatchThreadID, uint3 gid : SV_GroupThreadID)
 #endif
 		}
 	}
-    // Linear write to LDS (no bank conflicts). Significantly faster than memory loads.
+	// Linear write to LDS (no bank conflicts). Significantly faster than memory loads.
 	dummyLDS[gid.y][gid.x] = value.x + value.y + value.z + value.w;
 
 	GroupMemoryBarrierWithGroupSync();
@@ -69,6 +69,6 @@ void main(uint3 tid : SV_DispatchThreadID, uint3 gid : SV_GroupThreadID)
 	[branch]
 	if (loadConstants.writeIndex != 0xffffffff)
 	{
-        output[tid.x + tid.y] = dummyLDS[(loadConstants.writeIndex >> 8) & 0xff][loadConstants.writeIndex & 0xff];
-    }
+		output[tid.x + tid.y] = dummyLDS[(loadConstants.writeIndex >> 8) & 0xff][loadConstants.writeIndex & 0xff];
+	}
 }
