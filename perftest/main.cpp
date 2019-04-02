@@ -65,6 +65,9 @@ int main(int argc, char *argv[])
 	com_ptr<ID3D11ComputeShader> shaderLoadTyped2dInvariant = loadComputeShader(dx, "shaders/loadTyped2dInvariant.cso");
 	com_ptr<ID3D11ComputeShader> shaderLoadTyped2dLinear = loadComputeShader(dx, "shaders/loadTyped2dLinear.cso");
 	com_ptr<ID3D11ComputeShader> shaderLoadTyped2dRandom = loadComputeShader(dx, "shaders/loadTyped2dRandom.cso");
+	com_ptr<ID3D11ComputeShader> shaderLoadTyped3dInvariant = loadComputeShader(dx, "shaders/loadTyped3dInvariant.cso");
+	com_ptr<ID3D11ComputeShader> shaderLoadTyped3dLinear = loadComputeShader(dx, "shaders/loadTyped3dLinear.cso");
+	com_ptr<ID3D11ComputeShader> shaderLoadTyped3dRandom = loadComputeShader(dx, "shaders/loadTyped3dRandom.cso");
 	com_ptr<ID3D11ComputeShader> shaderLoadTyped4dInvariant = loadComputeShader(dx, "shaders/loadTyped4dInvariant.cso");
 	com_ptr<ID3D11ComputeShader> shaderLoadTyped4dLinear = loadComputeShader(dx, "shaders/loadTyped4dLinear.cso");
 	com_ptr<ID3D11ComputeShader> shaderLoadTyped4dRandom = loadComputeShader(dx, "shaders/loadTyped4dRandom.cso");
@@ -88,6 +91,9 @@ int main(int argc, char *argv[])
 	com_ptr<ID3D11ComputeShader> shaderLoadTex2dInvariant = loadComputeShader(dx, "shaders/loadTex2dInvariant.cso");
 	com_ptr<ID3D11ComputeShader> shaderLoadTex2dLinear = loadComputeShader(dx, "shaders/loadTex2dLinear.cso");
 	com_ptr<ID3D11ComputeShader> shaderLoadTex2dRandom = loadComputeShader(dx, "shaders/loadTex2dRandom.cso");
+	com_ptr<ID3D11ComputeShader> shaderLoadTex3dInvariant = loadComputeShader(dx, "shaders/loadTex3dInvariant.cso");
+	com_ptr<ID3D11ComputeShader> shaderLoadTex3dLinear = loadComputeShader(dx, "shaders/loadTex3dLinear.cso");
+	com_ptr<ID3D11ComputeShader> shaderLoadTex3dRandom = loadComputeShader(dx, "shaders/loadTex3dRandom.cso");
 	com_ptr<ID3D11ComputeShader> shaderLoadTex4dInvariant = loadComputeShader(dx, "shaders/loadTex4dInvariant.cso");
 	com_ptr<ID3D11ComputeShader> shaderLoadTex4dLinear = loadComputeShader(dx, "shaders/loadTex4dLinear.cso");
 	com_ptr<ID3D11ComputeShader> shaderLoadTex4dRandom = loadComputeShader(dx, "shaders/loadTex4dRandom.cso");
@@ -121,6 +127,7 @@ int main(int argc, char *argv[])
 	com_ptr<ID3D11ShaderResourceView> typedSRV_RG8 = dx.createTypedSRV(bufferInput, 1024, DXGI_FORMAT_R8G8_UNORM);
 	com_ptr<ID3D11ShaderResourceView> typedSRV_RG16F = dx.createTypedSRV(bufferInput, 1024, DXGI_FORMAT_R16G16_FLOAT);
 	com_ptr<ID3D11ShaderResourceView> typedSRV_RG32F = dx.createTypedSRV(bufferInput, 1024, DXGI_FORMAT_R32G32_FLOAT);
+	com_ptr<ID3D11ShaderResourceView> typedSRV_RGB32F = dx.createTypedSRV(bufferInput, 1024, DXGI_FORMAT_R32G32B32_FLOAT);
 	com_ptr<ID3D11ShaderResourceView> typedSRV_RGBA8 = dx.createTypedSRV(bufferInput, 1024, DXGI_FORMAT_R8G8B8A8_UNORM);
 	com_ptr<ID3D11ShaderResourceView> typedSRV_RGBA16F = dx.createTypedSRV(bufferInput, 1024, DXGI_FORMAT_R16G16B16A16_FLOAT);
 	com_ptr<ID3D11ShaderResourceView> typedSRV_RGBA32F = dx.createTypedSRV(bufferInput, 1024, DXGI_FORMAT_R32G32B32A32_FLOAT);
@@ -136,6 +143,7 @@ int main(int argc, char *argv[])
 	com_ptr<ID3D11Texture2D> texRG8 = dx.createTexture2d(uint2(32, 32), DXGI_FORMAT_R8G8_UNORM, 1);
 	com_ptr<ID3D11Texture2D> texRG16F = dx.createTexture2d(uint2(32, 32), DXGI_FORMAT_R16G16_FLOAT, 1);
 	com_ptr<ID3D11Texture2D> texRG32F = dx.createTexture2d(uint2(32, 32), DXGI_FORMAT_R32G32_FLOAT, 1);
+	com_ptr<ID3D11Texture2D> texRGB32F = dx.createTexture2d(uint2(32, 32), DXGI_FORMAT_R32G32B32_FLOAT, 1);
 	com_ptr<ID3D11Texture2D> texRGBA8 = dx.createTexture2d(uint2(32, 32), DXGI_FORMAT_R8G8B8A8_UNORM, 1);
 	com_ptr<ID3D11Texture2D> texRGBA16F = dx.createTexture2d(uint2(32, 32), DXGI_FORMAT_R16G16B16A16_FLOAT, 1);
 	com_ptr<ID3D11Texture2D> texRGBA32F = dx.createTexture2d(uint2(32, 32), DXGI_FORMAT_R32G32B32A32_FLOAT, 1);
@@ -147,6 +155,7 @@ int main(int argc, char *argv[])
 	com_ptr<ID3D11ShaderResourceView> texSRV_RG8 = dx.createSRV(texRG8);
 	com_ptr<ID3D11ShaderResourceView> texSRV_RG16F = dx.createSRV(texRG16F);
 	com_ptr<ID3D11ShaderResourceView> texSRV_RG32F = dx.createSRV(texRG32F);
+	com_ptr<ID3D11ShaderResourceView> texSRV_RGB32F = dx.createSRV(texRGB32F);
 	com_ptr<ID3D11ShaderResourceView> texSRV_RGBA8 = dx.createSRV(texRGBA8);
 	com_ptr<ID3D11ShaderResourceView> texSRV_RGBA16F = dx.createSRV(texRGBA16F);
 	com_ptr<ID3D11ShaderResourceView> texSRV_RGBA32F = dx.createSRV(texRGBA32F);
@@ -230,6 +239,9 @@ int main(int argc, char *argv[])
 		bench.testCase(shaderLoadTyped2dInvariant, loadCB, typedSRV_RG32F, "Buffer<RG32f>.Load uniform");
 		bench.testCase(shaderLoadTyped2dLinear, loadCB, typedSRV_RG32F, "Buffer<RG32f>.Load linear");
 		bench.testCase(shaderLoadTyped2dRandom, loadCB, typedSRV_RG32F, "Buffer<RG32f>.Load random");
+		bench.testCase(shaderLoadTyped3dInvariant, loadCB, typedSRV_RGB32F, "Buffer<RGB32f>.Load uniform");
+		bench.testCase(shaderLoadTyped3dLinear, loadCB, typedSRV_RGB32F, "Buffer<RGB32f>.Load linear");
+		bench.testCase(shaderLoadTyped3dRandom, loadCB, typedSRV_RGB32F, "Buffer<RGB32f>.Load random");
 		bench.testCase(shaderLoadTyped4dInvariant, loadCB, typedSRV_RGBA32F, "Buffer<RGBA32f>.Load uniform");
 		bench.testCase(shaderLoadTyped4dLinear, loadCB, typedSRV_RGBA32F, "Buffer<RGBA32f>.Load linear");
 		bench.testCase(shaderLoadTyped4dRandom, loadCB, typedSRV_RGBA32F, "Buffer<RGBA32f>.Load random");
@@ -294,6 +306,9 @@ int main(int argc, char *argv[])
 		bench.testCase(shaderLoadTex2dInvariant, loadCB, texSRV_RG32F, "Texture2D<RG32F>.Load uniform");
 		bench.testCase(shaderLoadTex2dLinear, loadCB, texSRV_RG32F, "Texture2D<RG32F>.Load linear");
 		bench.testCase(shaderLoadTex2dRandom, loadCB, texSRV_RG32F, "Texture2D<RG32F>.Load random");
+		bench.testCase(shaderLoadTex3dInvariant, loadCB, texSRV_RGB32F, "Texture2D<RGB32F>.Load uniform");
+		bench.testCase(shaderLoadTex3dLinear, loadCB, texSRV_RGB32F, "Texture2D<RGB32F>.Load linear");
+		bench.testCase(shaderLoadTex3dRandom, loadCB, texSRV_RGB32F, "Texture2D<RGB32F>.Load random");
 		bench.testCase(shaderLoadTex4dInvariant, loadCB, texSRV_RGBA32F, "Texture2D<RGBA32F>.Load uniform");
 		bench.testCase(shaderLoadTex4dLinear, loadCB, texSRV_RGBA32F, "Texture2D<RGBA32F>.Load linear");
 		bench.testCase(shaderLoadTex4dRandom, loadCB, texSRV_RGBA32F, "Texture2D<RGBA32F>.Load random");
